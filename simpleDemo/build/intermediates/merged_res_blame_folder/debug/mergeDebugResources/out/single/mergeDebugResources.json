@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.mesapp.test1.simpleDemo-debug-15:/drawable_splash.png.flat",
+        "source": "com.mesapp.test1.simpleDemo-main-17:/drawable/splash.png"
+    },
+    {
+        "merged": "com.mesapp.test1.simpleDemo-debug-15:/drawable_push.png.flat",
+        "source": "com.mesapp.test1.simpleDemo-main-17:/drawable/push.png"
+    },
+    {
+        "merged": "com.mesapp.test1.simpleDemo-debug-15:/drawable_icon.png.flat",
+        "source": "com.mesapp.test1.simpleDemo-main-17:/drawable/icon.png"
+    }
+]

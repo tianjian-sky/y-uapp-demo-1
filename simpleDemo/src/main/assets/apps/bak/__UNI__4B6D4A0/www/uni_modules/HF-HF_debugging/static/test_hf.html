@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title></title>
+    <!--preload-links-->
+    <!--app-context-->
+	<style type="text/css">
+		
+	</style>
+  </head>
+  <body>
+    <div id="app" ></div>
+	
+	121212
+	<script src="__uniappes6.js"></script>
+	<script src="view.umd.min.js"></script>
+	<script src="app-view.js"></script>
+   <script type="text/javascript">
+		document.getElementById("app").innerHTML="DDDDDDDD"
+		
+		var onType = false
+		var div = document.createElement('div');
+		var startX = 0
+		var startY = 0
+		let body = document.getElementsByTagName('body')
+		div.id = 'HF2';
+		div.innerText = 'HF调试器';
+		div.style.borderRadius = '5px';
+		div.style.backgroundColor = '#FF4A46';
+		div.style.color = '#FFFFFF';
+		div.style.width = '100px';
+		div.style.height = '40px';
+		div.style.position = 'fixed';
+		div.style.right = '0px';
+		div.style.bottom = '0px';
+		div.style.lineHeight='40px';
+		div.style.textAlign= 'center';
+		document.getElementsByTagName('body')[0].appendChild(div);
+		div.onclick = (e)=>{
+			UniViewJSBridge.publishHandler('BNT_VIEW',e);
+		};
+   </script>
+  </body>
+</html>
