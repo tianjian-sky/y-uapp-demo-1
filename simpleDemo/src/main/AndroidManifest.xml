@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="https" android:host="www.example.com" />
+                <data android:scheme="qq的appid" />
             </intent-filter>
         </activity>
         <activity
@@ -42,6 +42,6 @@
         </activity>
         <meta-data
             android:name="dcloud_appkey"
-            android:value="a674303bde9254902a97182daf31904b" />
+            android:value="990c2b55bf57f28178ee79aa1aaaf871" />
     </application>
 </manifest>

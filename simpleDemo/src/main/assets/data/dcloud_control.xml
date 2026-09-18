@@ -1,5 +1,5 @@
-<hbuilder>
+<hbuilder debug="true" syncDebug="true">
 <apps>
-    <app appid="H5F1942DE" appver=""/>
+    <app appid="H5C37EC22" appver="2"/>
 </apps>
 </hbuilder>

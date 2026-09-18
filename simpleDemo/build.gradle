@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 35
-    buildToolsVersion '35.0.0'
-    namespace 'com.mesapp.test1'
+    compileSdkVersion 36
+    buildToolsVersion '36.0.0'
+    namespace 'plus.H5C37EC22'
     defaultConfig {
-        applicationId "com.mesapp.test1"
+        applicationId "plus.H5C37EC22"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 259
+        versionName "2.5.9"
         multiDexEnabled true
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
@@ -18,12 +18,12 @@ android {
     }
     signingConfigs {
         config {
-            keyAlias 'key0'
-            keyPassword 'ABCabc123'
-            storeFile file('test.jks')
-            storePassword 'ABCabc123'
+            keyAlias 'h5c37ec22'
+            keyPassword 'ijoKz8Nk'
+            storeFile file('5946578200b987190d98f9b44d76341f.keystore')
+            storePassword 'ijoKz8Nk'
             v1SigningEnabled true
-            v2SigningEnabled false
+            v2SigningEnabled true
         }
     }
 
@@ -46,16 +46,23 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
-    implementation 'androidx.core:core:1.1.0'
+    implementation 'androidx.core:core:1.6.0'
     implementation "androidx.fragment:fragment:1.1.0"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.facebook.fresco:fresco:2.5.0'
-    implementation "com.facebook.fresco:animated-gif:2.5.0"
+    implementation "com.facebook.fresco:fresco:3.4.0"
+    implementation "com.facebook.fresco:middleware:3.4.0"
+    implementation "com.facebook.fresco:animated-gif:3.4.0"
+    implementation "com.facebook.fresco:webpsupport:3.4.0"
+    implementation "com.facebook.fresco:animated-webp:3.4.0"
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'com.alibaba:fastjson:1.2.83'
     implementation 'androidx.webkit:webkit:1.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation "net.lingala.zip4j:zip4j:2.11.5"
+
 }
 
