@@ -2,3 +2,6 @@
 **/build/
 .gradle
 .idea
+**/libs/bakForUts
+.jks
+.keystore

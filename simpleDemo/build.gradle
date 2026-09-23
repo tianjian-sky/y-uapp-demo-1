@@ -53,16 +53,48 @@ dependencies {
     implementation 'androidx.core:core:1.6.0'
     implementation "androidx.fragment:fragment:1.1.0"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    /**
+     *
+     * com.facebook.fresco:fresco 是 Facebook 开源的 Android 图片加载与显示库，以高性能和内存管理著称，尤其擅长处理大量图片、GIF 和 WebP。
+     */
     implementation "com.facebook.fresco:fresco:3.4.0"
     implementation "com.facebook.fresco:middleware:3.4.0"
     implementation "com.facebook.fresco:animated-gif:3.4.0"
     implementation "com.facebook.fresco:webpsupport:3.4.0"
     implementation "com.facebook.fresco:animated-webp:3.4.0"
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    /**
+     * com.github.bumptech.glide:glide 是 Android 上最流行的图片加载库之一，核心优势在于高性能、流畅的列表滚动体验，以及自动的图片缩放和缓存策
+     */
+//    implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'com.alibaba:fastjson:1.2.83'
     implementation 'androidx.webkit:webkit:1.5.0'
+    /**
+     * 在 build.gradle 中，annotationProcessor 是用来声明注解处理器（Annotation Processor） 的配置，它在编译期运行，根据源码中的注解生成代码或做校验。
+     */
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    /**
+     * net.lingala.zip4j:zip4j:2.11.5 是 Zip4j 库的一个稳定版本，核心优势在于支持 AES 加密、分卷压缩和中文文件名，用于处理 Java 原生 java.util.zip 无法覆盖的场景。
+     */
     implementation "net.lingala.zip4j:zip4j:2.11.5"
 
+    // uts
+    // implementation "com.squareup.okhttp3:okhttp:3.12.12"
+    // implementation "androidx.core:core-ktx:1.6.0"
+    // implementation "org.jetbrains.kotlin:kotlin-stdlib:2.2.0"
+    // implementation "org.jetbrains.kotlin:kotlin-reflect:2.2.0"
+    // implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1"
+    // implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
+    // implementation "com.github.getActivity:XXPermissions:18.63"
+    // modules
+    implementation project(':helloWorld')
+    implementation project(':s-file-picker')
+
+    // uni-app-x
+//    implementation project(':uniappx')
+//    implementation fileTree(include: ['*.aar'], dir: '../uniappx/libs')
+
+
+
 }
+
 

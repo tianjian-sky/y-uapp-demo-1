@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.common'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 21
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+}
+
+dependencies {
+//    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.10.1' // 是 AndroidX Core 库的 Kotlin 扩展版本，提供了大量实用的扩展函数和属性，让 Android 开发中的常见操作更简洁。它把很多需要写较长代码的操作变成了“一行式”的 Kotlin 写法
+    /**
+    com.google.android.material:material 是 Google 官方的 Material Design 组件库，为 Android 应用提供了一套符合 Material Design 规范的 UI 控件
+    两个关键注意事项
+    依赖仓库：这个库托管在 Google 的 Maven 仓库中，所以你的项目 settings.gradle 或根 build.gradle 的 repositories 块里必须包含 google()。
+    与旧库互斥：不要同时使用 com.google.android.material:material 和旧的 com.android.support:design。如果你正在使用 AndroidX，请完全迁移到新的 com.google.android.material 包名。
+    **/
+    implementation 'com.google.android.material:material:1.10.0'
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+}

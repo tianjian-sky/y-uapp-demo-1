@@ -1,1 +1,4 @@
 include ':simpleDemo'
+include ':s-file-picker'
+include ':helloWorld'
+include ':common'

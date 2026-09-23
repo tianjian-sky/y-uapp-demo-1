@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+//    id 'io.dcloud.uts.kotlin'
+//    id 'io.dcloud.uts.auto-register' // 仅uni-app x（蒸汽模式）添加
+}
+
+android {
+    namespace 'com.example.s_file_picker'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 21
+
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+}
+
+dependencies {
+//    implementation 'androidx.appcompat:appcompat:1.6.1'
+//    implementation 'androidx.core:core-ktx:1.10.1'
+//    implementation 'com.google.android.material:material:1.10.0'
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    compileOnly fileTree(include: ['*.aar'], dir: './libs')
+    compileOnly fileTree(include: ['*.jar'], dir: './libs')
+    compileOnly 'com.alibaba:fastjson:1.1.46.android'
+    compileOnly 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10'
+    compileOnly 'androidx.core:core-ktx:1.6.0'
+    compileOnly 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0'
+    compileOnly 'org.jetbrains.kotlin:kotlin-reflect:1.6.0'
+    compileOnly 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8'
+    compileOnly 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8'
+
+    implementation "com.squareup.okhttp3:okhttp:3.12.12"
+    compileOnly fileTree(include: ['*.aar'], dir: '../uniappx/libs')
+    implementation project(':common')
+
+}

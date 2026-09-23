@@ -9,6 +9,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.7.3'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.10'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -19,6 +20,23 @@ allprojects {
         maven {url 'https://maven.aliyun.com/repository/google'}
         maven {url 'https://maven.aliyun.com/repository/gradle-plugin'}
         maven {url 'https://maven.aliyun.com/repository/public'}
+        // uts
+//       maven { url 'https://jitpack.io' }
+        /**
+        *在 Android 项目的 build.gradle（或 Kotlin DSL 的 build.gradle.kts）中使用 google()，是为了声明 Google 的 Maven 仓库作为依赖查找源。
+            核心作用
+            google() 是一个仓库地址的快捷方式，指向 Google 官方的 Maven 仓库。它主要包含以下类型的库：
+
+            AndroidX 库（如 androidx.appcompat:appcompat）
+
+            Google Play 服务（如 com.google.android.gms:play-services-maps）
+
+            Firebase 组件
+
+            Material Design 组件
+
+            其他 Google 发布的 Android 相关依赖 
+        */
         google()
     }
 }
