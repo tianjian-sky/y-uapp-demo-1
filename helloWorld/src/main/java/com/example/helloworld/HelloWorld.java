@@ -38,7 +38,9 @@ import okhttp3.*;
 import com.syczuan.plugin.request.*;
 
 import com.alibaba.fastjson.JSONObject;
+//import uts.sdk.modules.DCloudUniNetwork.*;
 
+import com.example.filedownload.FileDownload;
 
 public class HelloWorld {
     public HelloWorld() {
@@ -53,12 +55,14 @@ public class HelloWorld {
         return webViewHelper.test();
     }
 
-    public int testWebviewPromiseResolve(WebView webview, String globalVarName, String promiseId) {
+    public int testWebviewPromiseResolve(WebView webview, String globalVarName, String promiseId) throws IOException {
         WebViewHelper webViewHelper = new WebViewHelper(webview);
         webViewHelper.consoleLog("begin testWebviewPromiseResolve");
         webViewHelper.consoleLog(globalVarName);
         webViewHelper.consoleLog(promiseId);
         webViewHelper.webview.evaluateJavascript("try {" + globalVarName + "['" + promiseId + "'].resolve(" + globalVarName + "['" + promiseId + "']" + ");} catch(e) {console.error('promise异常', e)}", null);
+        FileDownload fd = new FileDownload();
+        fd.downloadByUrl("https://unpkg.com/vconsole@latest/dist/vconsole.min.js", "vconsole.js", webview,  promiseId, globalVarName);
         return 1;
     }
 
@@ -102,23 +106,26 @@ public class HelloWorld {
     }
 
     public void downloadAsync(String url, String fileName, WebView webview) {
-//        Request request = new Request.Builder().url(url).build();
+        Request request = new Request.Builder().url(url).build();
         WebViewHelper webviewHelper = new WebViewHelper(webview);
-//        OkHttpClient client = new OkHttpClient();
-//        Context context = UTSAndroid.getAppContext();
-//        Uri collection = null;
-//        ContentValues values = new ContentValues();
-//        values.put(MediaStore.Downloads.DISPLAY_NAME, fileName);
-//        //        values.put(MediaStore.Downloads.MIME_TYPE, "text/plain");
-//        values.put(MediaStore.Downloads.IS_PENDING, 1);
-//        Uri item = context.getContentResolver().insert(collection, values);
+        webviewHelper.consoleLog(url);
+        webviewHelper.consoleLog(fileName);
+        OkHttpClient client = new OkHttpClient();
+        Context context = UTSAndroid.INSTANCE.getAppContext();
+        Uri collection = null;
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Downloads.DISPLAY_NAME, fileName);
+        values.put(MediaStore.Downloads.MIME_TYPE, "text/plain");
+        values.put(MediaStore.Downloads.IS_PENDING, 1);
+        Uri item = context.getContentResolver().insert(collection, values);
         webviewHelper.consoleLog("begin fn");
+//        NetworkManager nm = new NetworkManager()
 //
-        ThreadDemo T1 = new ThreadDemo( "Thread-1");
-        T1.start();
-
-        ThreadDemo T2 = new ThreadDemo( "Thread-2");
-        T2.start();
+//        ThreadDemo T1 = new ThreadDemo( "Thread-1");
+//        T1.start();
+//
+//        ThreadDemo T2 = new ThreadDemo( "Thread-2");
+//        T2.start();
 //        RequestModule rm = new RequestModule();
 //        JSONObject config = new JSONObject();
 //        config.put("url", url);
@@ -148,46 +155,46 @@ public class HelloWorld {
 //        };
 //
 //        rm.startDownload(config, cb1, cb2);
-//
-//        client.newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-////                webviewHelper.consoleLog("onFailure");
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-////                webviewHelper.consoleLog("onResponse");
-////                System.out.println(response.isSuccessful());
-////                if (!response.isSuccessful()) {
-////                    throw new IOException("下载失败: " + response.code());
-////                }
-//            try {
-//                ResponseBody body = response.body();
-//                if (body == null) {
-//                    throw new IOException("响应体为空");
-//                }
-////                long contentLength = body.contentLength();
-////                try (InputStream is = body.byteStream();
-////                     FileOutputStream fos = new FileOutputStream(dest)) {
-////                    byte[] buffer = new byte[8192];
-////                    long total = 0;
-////                    int len;
-////                    while ((len = is.read(buffer)) != -1) {
-////                        fos.write(buffer, 0, len);
-////                        total += len;
-////                    }
-////                    fos.flush();
-////                } catch (IOException e) {
-////                    callback.onFailure(call, e);
-////                }
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+//                webviewHelper.consoleLog("onFailure");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
 //                webviewHelper.consoleLog("onResponse");
-//            } catch (Exception e) {
-//
-//                e.printStackTrace();
-//            }
-//            }
-//        });
+//                System.out.println(response.isSuccessful());
+//                if (!response.isSuccessful()) {
+//                    throw new IOException("下载失败: " + response.code());
+//                }
+            try {
+                ResponseBody body = response.body();
+                if (body == null) {
+                    throw new IOException("响应体为空");
+                }
+//                long contentLength = body.contentLength();
+//                try (InputStream is = body.byteStream();
+//                     FileOutputStream fos = new FileOutputStream(dest)) {
+//                    byte[] buffer = new byte[8192];
+//                    long total = 0;
+//                    int len;
+//                    while ((len = is.read(buffer)) != -1) {
+//                        fos.write(buffer, 0, len);
+//                        total += len;
+//                    }
+//                    fos.flush();
+//                } catch (IOException e) {
+//                    callback.onFailure(call, e);
+//                }
+                webviewHelper.consoleLog("onResponse");
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+            }
+        });
     }
 }
 

@@ -33,6 +33,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     implementation "com.squareup.okhttp3:okhttp:3.12.12"
     implementation 'com.alibaba:fastjson:1.2.83'
+//    implementation 'uts.sdk.modules.DCloudUniNetwork'
     implementation project(':s-file-picker')
     implementation project(':common')
+    implementation project(':fileDownload')
 }

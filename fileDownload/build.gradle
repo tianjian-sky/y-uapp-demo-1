@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.filedownload'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 21
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+}
+
+dependencies {
+    compileOnly fileTree(include: ['*.aar'], dir: './libs')
+    compileOnly 'com.alibaba:fastjson:1.1.46.android'
+    compileOnly 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10'
+    compileOnly 'androidx.core:core-ktx:1.6.0'
+    compileOnly 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0'
+    compileOnly 'org.jetbrains.kotlin:kotlin-reflect:1.6.0'
+    compileOnly 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8'
+    compileOnly 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8'
+    implementation "com.squareup.okhttp3:okhttp:3.12.12"
+    implementation project(':common')
+
+}

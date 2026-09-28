@@ -11,12 +11,11 @@ import android.app.Activity
 import android.content.ContentValues
 import android.net.Uri
 import android.os.Build
+import android.os.Handler
 import android.provider.MediaStore
 import android.webkit.WebView
-import com.alibaba.fastjson.JSONObject
 import com.example.common.WebViewHelper
 import com.syczuan.plugin.request.*
-import io.dcloud.feature.uniapp.bridge.UniJSCallback
 import io.dcloud.uts.JSON
 import io.dcloud.uts.JsonNotNull
 import io.dcloud.uts.UTSAndroid
@@ -33,7 +32,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
-
 
 open class FileInfo (
     @JsonNotNull
@@ -244,100 +242,6 @@ open class SFilePickerHelper {
         })
         return 1;
     };
-
-    fun _downloadFile(url: String?, fileName: String?, webview: WebView) {
-
-
-
-    }
-
-    @Throws(IOException::class)
-    public fun testDownload(url: String, fileName: String, webview: WebView) {
-//        ThreadDemo(url, fileName, webview).start()
-//        UTSAndroid.getDispatcher("io").async( {
-            // 执行耗时任
-        val context = UTSAndroid.getAppContext()
-        val webviewHelper: WebViewHelper = WebViewHelper(webview)
-        // 查询公共下载目录
-        var collection: Uri? = null
-        webviewHelper.consoleLog("01")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            collection = MediaStore.Downloads.EXTERNAL_CONTENT_URI
-        }
-        webviewHelper.consoleLog(collection.toString())
-        webviewHelper.consoleLog(url)
-        webviewHelper.consoleLog(fileName)
-
-        val values = ContentValues()
-        values.put(MediaStore.Downloads.DISPLAY_NAME, fileName)
-        //        values.put(MediaStore.Downloads.MIME_TYPE, "text/plain");
-        values.put(MediaStore.Downloads.IS_PENDING, 1)
-        webviewHelper.consoleLog("2")
-        val item = context!!.contentResolver.insert(collection!!, values)
-        webviewHelper.consoleLog("3.1")
-        webviewHelper.consoleLog("3.2-")
-                // Starts a coroutine inside the scope with CoroutineScope.launch()
-        webviewHelper.consoleLog("3.3")
-            webviewHelper.consoleLog("4.1")
-//        val client = OkHttpClient()
-//        val request = Request.Builder().url(url).get().build()
-//        client.newCall(request).enqueue(object : Callback {
-//                override fun onFailure(call: Call, e: IOException) {
-//                    webviewHelper.consoleLog("on onFailure")
-//                }
-//                override fun onResponse(call: Call, response: Response) {
-//                    TODO("Not yet implemented")
-//                    webviewHelper.consoleLog("on resp")
-//                }
-//                fun onSuccess (call: Call, response: Response) {
-//                    webviewHelper.consoleLog("on onSuccess")
-//                    if (!response.isSuccessful) {
-//                        throw IOException("下载失败: ${response.code()}")
-//                    }
-//                    response.body()?.byteStream()?.use { input ->
-//                        context!!.contentResolver.openOutputStream(item!!).use { os ->
-//                            if (os != null) {
-//                                input.copyTo(os)
-//                            }
-//                            webviewHelper.consoleLog("copy end")
-//                        }
-//                    }
-//                    println("The withContext() on the thread: ${Thread.currentThread().name}")
-//                    webviewHelper.consoleLog("end")
-//                    values.clear()
-//                    values.put(MediaStore.Downloads.IS_PENDING, 0)
-//                    context!!.contentResolver.update(item!!, values, null, null)
-//                }
-//        })
-            val rm = RequestModule()
-            val config = JSONObject()
-            config.put("url", url)
-            config.put("fileName", fileName)
-            config.put("filePath", item)
-            val cb1: UniJSCallback = object : UniJSCallback {
-                override fun invoke(o: Any?) {
-                    webviewHelper.consoleLog("cb1 invoke")
-                }
-
-                override fun invokeAndKeepAlive(o: Any?) {
-                    webviewHelper.consoleLog("cb1 invokeAndKeepAlive")
-                }
-            }
-            val cb2: UniJSCallback = object : UniJSCallback {
-                override fun invoke(o: Any?) {
-                    webviewHelper.consoleLog("cb2 invoke")
-                }
-
-                override fun invokeAndKeepAlive(o: Any?) {
-                    webviewHelper.consoleLog("cb2 invokeAndKeepAlive")
-                }
-            }
-
-            rm.startDownload(config, cb1, cb2)
-            println("任务执行")
-//        webviewHelper.consoleLog("3.4")
-//        },null)
-    }
 }
 
 internal class ThreadDemo(val url: String, val fileName: String, webview: WebView) : Thread() {
